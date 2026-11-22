@@ -1,19 +1,195 @@
 
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>Archivio digitale - Tesi PhD</title>
-</head>
-<body>
-    <p>Reindirizzamento all'archivio digitale...</p>
 
-    <script>
-        window.location.replace(
-            "https://v0-cisternino-shakespeare-analysis-platform.vercel.app"
-        );
-    </script>
+    <title>EEMV | Digital Archive Access</title>
+
+    <style>
+        :root {
+            --background: #090d0e;
+            --surface: #121719;
+            --border: #293034;
+            --primary: #00b8f0;
+            --text: #f0eded;
+            --muted: #a39b98;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: var(--background);
+            color: var(--text);
+            font-family: Georgia, "Times New Roman", serif;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            padding: 22px 8%;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .brand {
+            color: var(--primary);
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        main {
+            flex: 1;
+            width: 100%;
+            max-width: 850px;
+            margin: auto;
+            padding: 65px 24px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: clamp(36px, 6vw, 58px);
+            line-height: 1.2;
+            letter-spacing: -1.5px;
+            margin: 0 0 22px;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            color: var(--muted);
+            font-size: 19px;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 55px;
+        }
+
+        .access-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 45px 35px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .icon {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .description {
+            color: #c2bcba;
+            font-size: 18px;
+            line-height: 1.8;
+            margin: 0 0 35px;
+        }
+
+        .access-button {
+            display: inline-block;
+            padding: 17px 32px;
+            background: var(--primary);
+            color: #071014;
+            border-radius: 7px;
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .access-button:hover {
+            background: #49d0ff;
+            transform: translateY(-2px);
+        }
+
+        .expiry {
+            margin-top: 35px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        footer {
+            padding: 25px;
+            border-top: 1px solid var(--border);
+            color: #777;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            main {
+                padding: 50px 20px;
+            }
+
+            .access-card {
+                padding: 32px 22px;
+            }
+
+            .subtitle {
+                font-size: 17px;
+                margin-bottom: 40px;
+            }
+
+            .description {
+                font-size: 16px;
+            }
+
+            .access-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="brand">⚜ EEMV</div>
+    </header>
+
+    <main>
+        <h1>Echoes of Early Modern Visions</h1>
+
+        <p class="subtitle">
+            A digital collection of royal portraits,
+            letters, and Shakespearean magic
+        </p>
+
+        <section class="access-card">
+            <div class="icon" aria-hidden="true">♜</div>
+
+            <p class="description">
+                Explore the cultural and political landscape
+                of the English Renaissance through a
+                curated digital collection of plays,
+                royal portraits, letters, and speeches.
+            </p>
+
+            <a
+                class="access-button"
+                href="https://v0-cisternino-shakespeare-analysis-platform.vercel.app"
+                rel="noopener noreferrer"
+            >
+                Enter the Digital Archive &rarr;
+            </a>
+        </section>
+
+        <p class="expiry">
+            Access available until 30 April 2027
+        </p>
+    </main>
+
+    <footer>
+        Echoes of Early Modern Visions
+        &middot; Digital Research Archive
+    </footer>
+
 </body>
 </html>
