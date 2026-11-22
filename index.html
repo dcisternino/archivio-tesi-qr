@@ -42,6 +42,15 @@
             font-size: 22px;
             font-weight: bold;
             letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
         }
 
         main {
@@ -66,7 +75,7 @@
             font-size: 19px;
             font-style: italic;
             line-height: 1.6;
-            margin-bottom: 55px;
+            margin: 0 0 55px;
         }
 
         .access-card {
@@ -78,10 +87,12 @@
             margin: 0 auto;
         }
 
-        .icon {
-            font-size: 36px;
-            color: var(--primary);
-            margin-bottom: 20px;
+        .crown-icon {
+            display: block;
+            width: 75px;
+            height: 75px;
+            object-fit: contain;
+            margin: 0 auto 24px;
         }
 
         .description {
@@ -109,23 +120,46 @@
             transform: translateY(-2px);
         }
 
+        .access-button:focus-visible {
+            outline: 3px solid #ffffff;
+            outline-offset: 4px;
+        }
+
         .expiry {
             margin-top: 35px;
             color: var(--muted);
             font-size: 14px;
         }
 
+        .expired-message {
+            color: var(--muted);
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+
         footer {
             padding: 25px;
             border-top: 1px solid var(--border);
-            color: #777;
+            color: #888;
             text-align: center;
             font-size: 13px;
         }
 
         @media (max-width: 600px) {
+            header {
+                padding: 18px 24px;
+            }
+
             main {
                 padding: 50px 20px;
+            }
+
+            h1 {
+                letter-spacing: -0.8px;
             }
 
             .access-card {
@@ -151,19 +185,26 @@
 <body>
 
     <header>
-        <div class="brand">⚜ EEMV</div>
+        <div class="brand">
+            <img src="corona.png" alt="" aria-hidden="true">
+            <span>EEMV</span>
+        </div>
     </header>
 
     <main>
         <h1>Echoes of Early Modern Visions</h1>
 
         <p class="subtitle">
-           A digital collection of royal portraits, 
+            A digital collection of royal portraits,
             letters, speeches and Shakespearean magic
         </p>
 
         <section class="access-card">
-            <div class="icon" aria-hidden="true">♛</div>
+            <img
+                src="corona.png"
+                alt="Royal Crown"
+                class="crown-icon"
+            >
 
             <p class="description">
                 Explore the cultural and political landscape
@@ -173,12 +214,23 @@
             </p>
 
             <a
+                id="archive-link"
                 class="access-button"
                 href="https://v0-cisternino-shakespeare-analysis-platform.vercel.app"
                 rel="noopener noreferrer"
+                hidden
             >
                 Enter the Digital Archive &rarr;
             </a>
+
+            <p
+                id="expired-message"
+                class="expired-message"
+                role="status"
+                hidden
+            >
+                The digital archive access period has ended.
+            </p>
         </section>
 
         <p class="expiry">
@@ -190,6 +242,33 @@
         Echoes of Early Modern Visions
         &middot; Digital Research Archive
     </footer>
+
+    <script>
+        // 1 May 2027, 00:00 Italian time (CEST).
+        const expirationDate = Date.parse(
+            "2027-04-30T22:00:00Z"
+        );
+
+        const archiveLink = document.getElementById(
+            "archive-link"
+        );
+
+        const expiredMessage = document.getElementById(
+            "expired-message"
+        );
+
+        function updateArchiveAccess() {
+            const isExpired = Date.now() >= expirationDate;
+
+            archiveLink.hidden = isExpired;
+            expiredMessage.hidden = !isExpired;
+        }
+
+        updateArchiveAccess();
+
+        // Recheck while the page remains open.
+        setInterval(updateArchiveAccess, 60000);
+    </script>
 
 </body>
 </html>
